@@ -1348,7 +1348,7 @@ class RestoreUserJWTAuthSubHandler(StateBasedSubHandler):
                     host, password, timeout=CONNECT_TIMEOUT
                 ) as conn:
                     async with conn.cursor() as cursor:
-                        for user_spec in cratedb["spec"].get("users"):
+                        for user_spec in cratedb["spec"].get("users", []):
                             username = user_spec["name"]
 
                             await set_user_jwt(
